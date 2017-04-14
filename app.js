@@ -5,7 +5,21 @@ function BasicCard(front, back) {
 
 	this.front = front;
 	this.back = back;
+	this.writeInFile();
 }
+BasicCard.prototype.writeInFile = function () {
+	var fs = require('fs');
+
+	var card = '==========================================\n' +
+		'\nFront : ' + this.front + '\n' +
+		'Back  : ' + this.back + '\n' +
+		'\n==========================================\n';
+
+	fs.appendFile('basicCards.txt', card, function (err) {
+		if(err) throw err;
+	});
+}
+
 
 function ClozeCard(text, cloze) {
 	if(!(this instanceof ClozeCard)){
@@ -14,10 +28,22 @@ function ClozeCard(text, cloze) {
 
 	this.fulText = text;
 	this.cloze = cloze;
-	this.getParcial();
+	this.parcial;
+	this.clozeCardInit();
 }
+ClozeCard.prototype.writeInFile = function () {
+	var fs = require('fs');
+	var card = '==========================================\n' +
+						 '\nCloze    : ' + this.cloze + '\n' +
+						 'Parcial  : ' + this.parcial + '\n' +
+						 'FullText : ' + this.fulText + '\n' +
+						 '\n==========================================\n';
 
-ClozeCard.prototype.getParcial = function () {
+	fs.appendFile('clozeCards.txt', card, function (err) {
+		if(err) throw err;
+	});
+};
+ClozeCard.prototype.clozeCardInit = function () {
 	var emptySpace = ' ';
 
 	// Creat's empty space
@@ -25,10 +51,13 @@ ClozeCard.prototype.getParcial = function () {
 		emptySpace += '_ ';
 	}
 
-	if(this.fulText.search(this.cloze) === -1){
+	if(this.fulText.search(this.cloze) !== -1){
+		this.parcial = this.fulText.replace(this.cloze, emptySpace);
+		this.writeInFile();
+	} else {
+		this.parcial = 'Invalid input';
 		throw new Error('"' + this.cloze + '"  doesn\'t exist in  "' + this.fulText + '" !');
 	}
-	this.parcial = this.fulText.replace(this.cloze, emptySpace);
 
 };
 
