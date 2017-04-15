@@ -1,0 +1,23 @@
+{
+  "name": "flash-card-generator",
+  "version": "1.0.0",
+  "description": "Flash card application",
+  "main": "flashCars.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinsflavio/Flashcard-Generator.git"
+  },
+  "author": "Flavio Martins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinsflavio/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/martinsflavio/Flashcard-Generator#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "jquery": "^3.2.1"
+  }
+}

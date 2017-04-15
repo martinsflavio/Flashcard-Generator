@@ -1,0 +1,12 @@
+Cloze    : George Washington
+Parcial  : _________________ was the first president of the United States.
+FullText : George Washington was the first president of the United States.
++
+Cloze    : George Washington
+Parcial  : _________________ was the first president of the United States.
+FullText : George Washington was the first president of the United States.
++
+Cloze    : George Washington
+Parcial  : _________________ was the first president of the United States.
+FullText : George Washington was the first president of the United States.
++
